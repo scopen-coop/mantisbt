@@ -64,7 +64,7 @@ $t_container['errorHandler'] = function( $p_container ) {
 			$t_data['localized'] = error_string( $p_exception->getCode() );
 
 			$t_result = ApiObjectFactory::faultFromException( $p_exception );
-			return $p_response->withStatus( $t_result->status_code, $t_result->fault_string )->withJson( $t_data );
+			return $p_response->withStatus( $t_result->getCode(), $t_result->getMessage() )->withJson( $t_data );
 		}
 
 		if( is_a( $p_exception, 'Mantis\Exceptions\LegacyApiFaultException' ) ) {

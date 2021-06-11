@@ -75,7 +75,7 @@ function rest_filter_delete( SlimRequest $p_request, SlimResponse $p_response, a
 
 	$t_result = mci_filter_delete( $t_filter_id );
 	if( ApiObjectFactory::isFault( $t_result ) ) {
-		return $p_response->withStatus( $t_result->status_code, $t_result->fault_string );
+		return $p_response->withStatus( $t_result->getCode(), $t_result->getMessage() );
 	}
 
 	return $p_response->withStatus( HTTP_STATUS_NO_CONTENT );
